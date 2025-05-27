@@ -38,7 +38,7 @@ jobs:
       with:
         tag_name: v${{ env.NOW }}
         files: |
-          assets/*
+          assets
           core.lua
           core.xml
           export.lua
