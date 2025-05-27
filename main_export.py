@@ -4,7 +4,7 @@ import jsontolua
 from urllib.parse import quote_plus 
 
 base_url = 'https://murlok.io/api/guides'
-contents = ['mm+']
+contents = ['mm+', 'solo']
 
 classes = {        
         'death-knight': {
@@ -97,8 +97,8 @@ for content in contents:
     export = {}
     exports[content] = export
     for cls, config in classes.items():
-        if cls not in ['paladin']:
-            continue
+        # if cls not in ['paladin']:
+        #     continue
         export[cls] = {}
         for spec, heros in config.items():
             export[cls][spec] = {}
