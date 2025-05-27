@@ -15,7 +15,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    environment: PROD
     permissions:
       contents: write
 
@@ -41,7 +40,9 @@ jobs:
       with:
         type: 'zip'
         filename: 'MurlokExport.zip'
-        exclusions: '*.git* *.py'
+        directory: ..
+        path: MurlokExport
+        recursive_exclusions: '*.git* *.py'
     - name: set env
       run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Release
@@ -57,4 +58,5 @@ jobs:
         game_endpoint: "wow"
         game_versions: "11.1.7"
         project_id: "1273867"
+        changelog: ${{ github.event.workflow_run.head_commit.message }}
         token: "${{ secrets.CF_API_TOKEN }}"    
