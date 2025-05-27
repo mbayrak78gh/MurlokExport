@@ -60,5 +60,5 @@ jobs:
         game_endpoint: "wow"
         game_versions: "11.1.7"
         project_id: "1273867"
-        changelog: ${{ github.event.workflow_run.head_commit.message }}
+        changelog: ${{ github.event.head_commit.message }}
         token: "${{ secrets.CF_API_TOKEN }}"    
