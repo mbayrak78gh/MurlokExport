@@ -38,9 +38,13 @@ jobs:
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
-        type: 'tar'
-        filename: 'MurlokExport.tar.gz'
+        type: 'zip'
+        filename: 'MurlokExport.zip'
+        directory: ..
+        path: MurlokExport
         exclusions: '*.git* *.py'
+    - name: move zip file
+      run: mv ../MurlokExport.zip .
     - name: set env
       run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Release
