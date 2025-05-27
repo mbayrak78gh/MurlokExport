@@ -31,12 +31,14 @@ jobs:
       run: python main_export.py
       env: 
         BNET_TOKEN: ${{ secrets.BNET_TOKEN }}
+    - name: rm pycache
+      run: rm -rf __pycache__
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
         filename: 'MurlokExport.zip'
-        exclusions: '*.git* *.py __pycache__ __pycache__/*'
+        exclusions: '*.git* *.py'
     - name: set env
       run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Release
