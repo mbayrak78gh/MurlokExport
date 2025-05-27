@@ -46,3 +46,11 @@ jobs:
       with:
         tag_name: v${{ env.NOW }}
         files: MurlokExport.zip
+    - name: "Upload to CurseForge"
+      uses: itsmeow/curseforge-upload@v3
+      with:
+        file_path: "MurlokExport.zip"
+        game_endpoint: "wow"
+        game_versions: "517"
+        project_id: "1273867"
+        token: "${{ secrets.CF_API_TOKEN }}"    
