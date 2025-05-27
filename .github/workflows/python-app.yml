@@ -51,6 +51,6 @@ jobs:
       with:
         file_path: "MurlokExport.zip"
         game_endpoint: "wow"
-        game_versions: "517"
+        game_versions: "11.1.7"
         project_id: "1273867"
         token: "${{ secrets.CF_API_TOKEN }}"    
