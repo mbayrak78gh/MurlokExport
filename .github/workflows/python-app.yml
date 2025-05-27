@@ -30,7 +30,7 @@ jobs:
       env: 
         BNET_TOKEN: ${{ secrets.BNET_TOKEN }}
     - name: set env
-      run: echo "::set-env name=NOW::$(date +'%Y%m%d.%H%M%S')"        
+      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
