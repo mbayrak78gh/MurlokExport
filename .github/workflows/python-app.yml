@@ -36,8 +36,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'MurlokExport.zip'
-        exclusions: '*.git* *.py __pycache__/*'        
-        recursive_exclusions: "__pycache__"
+        exclusions: '*.git* *.py __pycache__'
     - name: set env
       run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Release
