@@ -92,6 +92,11 @@ classes = {
         # },
     }
 
+oauth_res = requests.post('https://oauth.battle.net/token', data={'grant_type': 'client_credentials'}, auth=(os.environ["BNET_CLIENT_ID"], os.environ["BNET_CLIENT_SECRET"]))
+if oauth_res.status_code != 200:
+    raise Exception('Token for BNET couldn\'t be fetched')
+bnet_token = oauth_res.json()['access_token']
+
 exports = {}
 for content in contents:
     export = {}
@@ -246,7 +251,7 @@ for content in contents:
                         charAPI = counts['charAPI']
                         print(content, cls, spec, hero, slot, item_id, charAPI)
                         if charAPI not in bnet_chars:
-                            response = requests.get(counts['charAPI'], headers={'Authorization': f'Bearer {os.environ["BNET_TOKEN"]}'})
+                            response = requests.get(counts['charAPI'], headers={'Authorization': f'Bearer {bnet_token}'})
                             if response.status_code == 200:
                                 bnet_chars[charAPI] = response.json()['equipped_items']
                             else:

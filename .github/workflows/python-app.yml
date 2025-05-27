@@ -32,7 +32,8 @@ jobs:
     - name: Run app
       run: python main_export.py
       env: 
-        BNET_TOKEN: ${{ secrets.BNET_TOKEN }}
+        BNET_CLIENT_ID: ${{ secrets.BNET_CLIENT_ID }}
+        BNET_CLIENT_SECRET: ${{ secrets.BNET_CLIENT_SECRET }}
     - name: rm pycache
       run: rm -rf __pycache__
     - name: Archive Release
@@ -52,6 +53,7 @@ jobs:
       uses: itsmeow/curseforge-upload@v3
       with:
         file_path: "MurlokExport.zip"
+        display_name: "MurlokExport v${{ env.NOW }}"
         game_endpoint: "wow"
         game_versions: "11.1.7"
         project_id: "1273867"
