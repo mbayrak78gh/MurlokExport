@@ -238,7 +238,7 @@ end
 function UIMurlokExport_OnLoad(self)
 	self:SetTitle("Murlok Export")
 	tinsert(UISpecialFrames, self:GetName())
-	UIMurlokExportPortrait:SetTexture(core:Asset("murlok"))
+	UIMurlokExportPortrait:SetTexture(core:Asset("MurlokExport"))
 
 	UIMurlokExport:RegisterForDrag("LeftButton")
 
@@ -852,7 +852,7 @@ local icon = LibStub("LibDBIcon-1.0")
 local meLDB = LibStub("LibDataBroker-1.1"):NewDataObject("Murlok Export", {
 	type = "data source",  
 	text = "Murlok Export",  
-	icon = core:Asset("murlok"),  
+	icon = core:Asset("MurlokExport"),  
 	OnClick = function() core:Toggle() end,
 })
 icon:Register("Murlok Export", meLDB)
