@@ -253,7 +253,11 @@ for content in contents:
                         if charAPI not in bnet_chars:
                             response = requests.get(counts['charAPI'], headers={'Authorization': f'Bearer {bnet_token}'})
                             if response.status_code == 200:
-                                bnet_chars[charAPI] = response.json()['equipped_items']
+                                body = response.json()
+                                if 'equipped_items' in body:
+                                    bnet_chars[charAPI] = response.json()['equipped_items']
+                                else:
+                                    print('missing items', response.status_code, slot, item_id, charAPI)
                             else:
                                 print(response.status_code, slot, item_id, charAPI)
                         
