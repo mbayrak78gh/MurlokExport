@@ -28,37 +28,32 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install requests
-    - name: Run app
+    - name: Export Murlok.io data
       run: python main_export.py
       env: 
         BNET_CLIENT_ID: ${{ secrets.BNET_CLIENT_ID }}
         BNET_CLIENT_SECRET: ${{ secrets.BNET_CLIENT_SECRET }}
-    - name: rm pycache
+    - name: Remove python cache
       run: rm -rf __pycache__
+    - name: Set environment variable NOW for versioning
+      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
-        type: 'zip'
-        filename: 'MurlokExport.zip'
+        type: zip
+        filename: MurlokExport${{ env.NOW }}.zip
         directory: ..
         path: MurlokExport
-        exclusions: '*.git* *.py'
-    - name: move zip file
-      run: mv ../MurlokExport.zip .
-    - name: set env
-      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v${{ env.NOW }}
-        files: MurlokExport.zip
-    - name: "Upload to CurseForge"
+        exclusions: "*.git* *.py"
+    - name: Move ZIP file
+      run: mv ../MurlokExport${{ env.NOW }}.zip .
+    - name: Upload to CurseForge
       uses: itsmeow/curseforge-upload@v3
       with:
-        file_path: "MurlokExport.zip"
-        display_name: "MurlokExport v${{ env.NOW }}"
-        game_endpoint: "wow"
+        file_path: MurlokExport${{ env.NOW }}.zip
+        display_name: MurlokExport v${{ env.NOW }}
+        game_endpoint: wow
         game_versions: "11.1.7"
         project_id: "1273867"
         changelog: ${{ github.event.head_commit.message }}
-        token: "${{ secrets.CF_API_TOKEN }}"    
+        token: ${{ secrets.CF_API_TOKEN }}

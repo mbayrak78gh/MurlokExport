@@ -6,6 +6,16 @@
 ## Author: Alexandrix (EU - Teldrassil)
 ## X-Credits: Big thanks to |cff00ccffMurlok.io|r team for providing rated data
 
-export.lua
-core.xml
-init.lua
+Export.lua
+
+lib\LibDataBroker-1.1\LibDataBroker-1.1.lua
+lib\LibDBIcon-1.0\LibDBIcon-1.0.lua
+ClassList.xml
+Stats.xml
+TalentsList.xml
+TraitsTree.xml
+EquipmentsList.xml
+Core.xml
+
+MinimapButton.lua
+Init.lua

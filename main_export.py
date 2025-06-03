@@ -1,88 +1,90 @@
 import requests
 import os
-import jsontolua
+import json_to_lua
 from urllib.parse import quote_plus 
+from datetime import datetime
+from datetime import timezone
 
 base_url = 'https://murlok.io/api/guides'
 contents = ['mm+', 'solo']
 
 classes = {        
         'death-knight': {
-            'blood': ['san\'layn', 'deathbringer'],
-            'frost': ['rider-of-the-apocalypse', 'deathbringer'],
-            'unholy': ['san\'layn', 'rider-of-the-apocalypse']
+            'blood': [{'id': 31, 'name': 'san\'layn'}, {'id': 33, 'name': 'deathbringer'}],
+            'frost': [{'id': 32, 'name': 'rider-of-the-apocalypse'}, {'id': 33, 'name': 'deathbringer'}],
+            'unholy': [{'id': 31, 'name': 'san\'layn'}, {'id': 32, 'name': 'rider-of-the-apocalypse'}]
         },
 
         'demon-hunter': {
-            'havoc': ['fel-scarred', 'aldrachi-reaver'],
-            'vengeance': ['fel-scarred', 'aldrachi-reaver']
+            'havoc': [{'id': 34, 'name': 'fel-scarred'}, {'id': 35, 'name': 'aldrachi-reaver'}],
+            'vengeance': [{'id': 34, 'name': 'fel-scarred'}, {'id': 35, 'name': 'aldrachi-reaver'}]
         },
 
         'druid': {
-            'balance': ['keeper-of-the-grove', 'elune\'s-chosen'],
-            'feral': ['druid-of-the-claw', 'wildstalker'],
-            'guardian': ['druid-of-the-claw', 'elune\'s-chosen'],
-            'restoration': ['wildstalker', 'keeper-of-the-grove']
+            'balance': [{'id': 23, 'name': 'keeper-of-the-grove'}, {'id': 24, 'name': 'elune\'s-chosen'}],
+            'feral': [{'id': 21, 'name': 'druid-of-the-claw'}, {'id': 22, 'name': 'wildstalker'}],
+            'guardian': [{'id': 21, 'name': 'druid-of-the-claw'}, {'id': 24, 'name': 'elune\'s-chosen'}],
+            'restoration': [{'id': 22, 'name': 'wildstalker'}, {'id': 23, 'name': 'keeper-of-the-grove'}]
         },
 
         'evoker': {
-            'devastation': ['scalecommander', 'flameshaper'],
-            'preservation': ['flameshaper', 'chronowarden'],
-            'augmentation': ['scalecommander', 'chronowarden']
+            'devastation': [{'id': 36, 'name': 'scalecommander'}, {'id': 37, 'name': 'flameshaper'}],
+            'preservation': [{'id': 37, 'name': 'flameshaper'}, {'id': 38, 'name': 'chronowarden'}],
+            'augmentation': [{'id': 36, 'name': 'scalecommander'}, {'id': 38, 'name': 'chronowarden'}]
         },
 
         'hunter': {
-            'beast-mastery': ['pack-leader', 'dark-ranger'],
-            'marksmanship': ['sentinel', 'dark-ranger'],
-            'survival': ['sentinel', 'pack-leader']
+            'beast-mastery': [{'id': 43, 'name': 'pack-leader'}, {'id': 44, 'name': 'dark-ranger'}],
+            'marksmanship': [{'id': 42, 'name': 'sentinel'}, {'id': 44, 'name': 'dark-ranger'}],
+            'survival': [{'id': 42, 'name': 'sentinel'}, {'id': 43, 'name': 'pack-leader'}]
         },
 
         'mage': {
-            'arcane': ['sunfury', 'spellslinger'],
-            'fire': ['sunfury', 'frostfire'],
-            'frost': ['spellslinger', 'frostfire']
+            'arcane': [{'id': 39, 'name': 'sunfury'}, {'id': 40, 'name': 'spellslinger'}],
+            'fire': [{'id': 39, 'name': 'sunfury'}, {'id': 41, 'name': 'frostfire'}],
+            'frost': [{'id': 40, 'name': 'spellslinger'}, {'id': 41, 'name': 'frostfire'}]
         },
 
         'monk': {
-            'brewmaster': ['shado-pan', 'master-of-harmony'],
-            'windwalker': ['conduit-of-the-celestials', 'shado-pan'],
-            'mistweaver': ['conduit-of-the-celestials', 'master-of-harmony'],
+            'brewmaster': [{'id': 65, 'name': 'shado-pan'}, {'id': 66, 'name': 'master-of-harmony'}],
+            'windwalker': [{'id': 64, 'name': 'conduit-of-the-celestials'}, {'id': 65, 'name': 'shado-pan'}],
+            'mistweaver': [{'id': 64, 'name': 'conduit-of-the-celestials'}, {'id': 66, 'name': 'master-of-harmony'}],
         },
 
         'paladin': {
-            'holy': ['lightsmith', 'herald-of-the-sun'],
-            'protection': ['templar', 'lightsmith'],
-            'retribution': ['templar', 'herald-of-the-sun'],
+            'holy': [{'id': 49, 'name': 'lightsmith'}, {'id': 50, 'name': 'herald-of-the-sun'}],
+            'protection': [{'id': 48, 'name': 'templar'}, {'id': 49, 'name': 'lightsmith'}],
+            'retribution': [{'id': 48, 'name': 'templar'}, {'id': 50, 'name': 'herald-of-the-sun'}],
         },
 
         'priest': {
-            'discipline': ['voidweaver', 'oracle'],
-            'holy': ['archon', 'oracle'],
-            'shadow': ['voidweaver', 'archon'],
+            'discipline': [{'id': 18, 'name': 'voidweaver'}, {'id': 20, 'name': 'oracle'}],
+            'holy': [{'id': 19, 'name': 'archon'}, {'id': 20, 'name': 'oracle'}],
+            'shadow': [{'id': 18, 'name': 'voidweaver'}, {'id': 19, 'name': 'archon'}],
         },
 
         'rogue': {
-            'assassination': ['fatebound', 'deathstalker'],
-            'outlaw': ['trickster', 'fatebound'],
-            'subtlety': ['trickster', 'deathstalker'],
+            'assassination': [{'id': 52, 'name': 'fatebound'}, {'id': 53, 'name': 'deathstalker'}],
+            'outlaw': [{'id': 51, 'name': 'trickster'}, {'id': 52, 'name': 'fatebound'}],
+            'subtlety': [{'id': 51, 'name': 'trickster'}, {'id': 53, 'name': 'deathstalker'}],
         },
 
         'shaman': {
-            'elemental': ['stormbringer', 'farseer'],
-            'enhancement': ['totemic', 'stormbringer'],
-            'restoration': ['totemic', 'farseer'],
+            'elemental': [{'id': 55, 'name': 'stormbringer'}, {'id': 56, 'name': 'farseer'}],
+            'enhancement': [{'id': 54, 'name': 'totemic'}, {'id': 55, 'name': 'stormbringer'}],
+            'restoration': [{'id': 54, 'name': 'totemic'}, {'id': 56, 'name': 'farseer'}],
         },
 
         'warlock': {
-            'affliction': ['soul-harvester', 'hellcaller'],
-            'demonology': ['soul-harvester', 'diabolist'],
-            'destruction': ['hellcaller', 'diabolist'],
+            'affliction': [{'id': 57, 'name': 'soul-harvester'}, {'id': 58, 'name': 'hellcaller'}],
+            'demonology': [{'id': 57, 'name': 'soul-harvester'}, {'id': 59, 'name': 'diabolist'}],
+            'destruction': [{'id': 58, 'name': 'hellcaller'}, {'id': 59, 'name': 'diabolist'}],
         },
 
         'warrior': {
-            'arms': ['slayer', 'colossus'],
-            'fury': ['slayer', 'mountain-thane'],
-            'protection': ['mountain-thane', 'colossus']
+            'arms': [{'id': 60, 'name': 'slayer'}, {'id': 62, 'name': 'colossus'}],
+            'fury': [{'id': 60, 'name': 'slayer'}, {'id': 61, 'name': 'mountain-thane'}],
+            'protection': [{'id': 61, 'name': 'mountain-thane'}, {'id': 62, 'name': 'colossus'}]
         }
 
         # '': {
@@ -108,8 +110,8 @@ for content in contents:
         for spec, heros in config.items():
             export[cls][spec] = {}
             for hero in heros:
-
-                response = requests.get(f'{base_url}/{cls}/{spec}/{hero}/{content}')
+                hero_name = hero['name']
+                response = requests.get(f'{base_url}/{cls}/{spec}/{hero_name}/{content}')
                 if response.status_code != 200:
                     continue
 
@@ -117,6 +119,7 @@ for content in contents:
                 nchars = len(chars)
 
                 stats = {
+                    'id': hero['id'],
                     'count': 0,
                     'secondary_stats': {
                         'haste': {'percent': 0, 'value': 0},
@@ -139,7 +142,7 @@ for content in contents:
                 }
 
                 equips = {}
-                for i, char in enumerate(chars):                
+                for i, char in enumerate(chars):
                     stats['secondary_stats']['haste']['percent'] += char.get('HasteValue', 0)
                     stats['secondary_stats']['crit']['percent'] += char.get('CritValue', 0)
                     stats['secondary_stats']['mastery']['percent'] += char.get('MasteryValue', 0)
@@ -249,7 +252,7 @@ for content in contents:
                 for slot, equip in equips.items():
                     for item_id, counts in equip['items'].items():
                         charAPI = counts['charAPI']
-                        print(content, cls, spec, hero, slot, item_id, charAPI)
+                        print(content, cls, spec, hero_name, slot, item_id, charAPI)
                         if charAPI not in bnet_chars:
                             response = requests.get(counts['charAPI'], headers={'Authorization': f'Bearer {bnet_token}'})
                             if response.status_code == 200:
@@ -268,9 +271,10 @@ for content in contents:
                                     counts['bonus'] = bnet_item['bonus_list']
 
                 stats['equips'] = equips
-                export[cls][spec][hero] = stats
+                export[cls][spec][hero_name] = stats
 
-with open('export.lua', 'w') as file:
-    lua_export = ''.join(jsontolua.dic_to_lua_str(exports))
+with open('Export.lua', 'w') as file:
+    exports['timestamp'] = datetime.now(timezone.utc).isoformat()
+    lua_export = ''.join(json_to_lua.dic_to_lua_str(exports, False))
     file.writelines(f'MurlokExport = {lua_export}')
   
