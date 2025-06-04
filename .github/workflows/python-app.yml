@@ -41,17 +41,17 @@ jobs:
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: zip
-        filename: MurlokExport${{ env.NOW }}.zip
+        filename: MurlokExport_v${{ env.NOW }}.zip
         directory: ..
         path: MurlokExport
         exclusions: "*.git* *.py"
     - name: Move ZIP file
-      run: mv ../MurlokExport${{ env.NOW }}.zip .
+      run: mv ../MurlokExport_v${{ env.NOW }}.zip .
     - name: Upload to CurseForge
       uses: itsmeow/curseforge-upload@v3
       with:
-        file_path: MurlokExport${{ env.NOW }}.zip
-        display_name: MurlokExport v${{ env.NOW }}
+        file_path: MurlokExport_v${{ env.NOW }}.zip
+        display_name: MurlokExport_v${{ env.NOW }}
         game_endpoint: wow
         game_versions: "11.1.7"
         project_id: "1273867"

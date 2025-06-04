@@ -1,10 +1,22 @@
 ## Interface: 110105, 110107
-## Version: 1.0.0
+## Version: 1.1.0
 ## Title: |cff00ccffMurlok|r Export
 ## IconTexture: Interface/AddOns/MurlokExport/assets/murlok.tga
 ## Notes: Simple addon to display Murlok.io rated Mythic+ or PvP data
 ## Author: Alexandrix (EU - Teldrassil)
 ## X-Credits: Big thanks to |cff00ccffMurlok.io|r team for providing rated data
+## X-Curse-Project-ID: 1273867
+## Category-enUS: Dungeons & Raids
+## Category-deDE: Dungeons & Schlachtzüge
+## Category-esES: Mazmorras y bandas
+## Category-esMX: Calabozos y bandas
+## Category-frFR: Donjons et raids
+## Category-itIT: Spedizioni e incursioni
+## Category-koKR: 던전 및 공격대
+## Category-ptBR: Masmorras e Raides
+## Category-ruRU: Подземелья и рейды
+## Category-zhCN: 地下城和团队副本
+## Category-zhTW: 地城與團隊
 
 Export.lua
 
