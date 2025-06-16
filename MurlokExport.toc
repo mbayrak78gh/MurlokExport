@@ -1,7 +1,7 @@
 ## Interface: 110105, 110107
 ## Version: 1.1.0
 ## Title: |cff00ccffMurlok|r Export
-## IconTexture: Interface/AddOns/MurlokExport/assets/murlok.tga
+## IconTexture: Interface/AddOns/MurlokExport/assets/MurlokExport.tga
 ## Notes: Simple addon to display Murlok.io rated Mythic+ or PvP data
 ## Author: Alexandrix (EU - Teldrassil)
 ## X-Credits: Big thanks to |cff00ccffMurlok.io|r team for providing rated data
