@@ -49,6 +49,7 @@ local function OnLeave(button)
 	if dbIcon.tooltip.icon then
 		dbIcon.tooltip.icon:Hide()
 	end
+	dbIcon.tooltip:Hide()
 end
 
 local dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Murlok Export", {
