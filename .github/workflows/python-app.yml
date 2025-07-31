@@ -22,8 +22,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Set environment variable NOW for versioning
       run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
-    # - name: Set environment variable CHANGELOG
-    #   run: echo "CHANGELOG='$(cat Changelog.md)'" >> $GITHUB_ENV
     - name: Read changelog
       id: changelog_reader
       uses: andstor/file-reader-action@v1
@@ -43,7 +41,7 @@ jobs:
         BNET_CLIENT_ID: ${{ secrets.BNET_CLIENT_ID }}
         BNET_CLIENT_SECRET: ${{ secrets.BNET_CLIENT_SECRET }}
     - name: Remove python cache
-      run: rm -rf Python/__pycache__
+      run: rm -rf Python/__pycache__ Python/*.py
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
@@ -52,7 +50,6 @@ jobs:
         directory: ..
         path: MurlokExport
         exclusions: "*.git*"
-        recursive_exclusions: "*.py"
     - name: Move ZIP file
       run: mv ../MurlokExport_v${{ env.NOW }}.zip .
     - name: Upload to CurseForge
