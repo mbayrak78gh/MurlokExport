@@ -24,6 +24,10 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Set environment variable NOW for versioning
+      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
+    - name: Set environment variable CHANGELOG
+      run: echo "CHANGELOG='$(cat Changelog.md)'" >> $GITHUB_ENV
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -35,8 +39,6 @@ jobs:
         BNET_CLIENT_SECRET: ${{ secrets.BNET_CLIENT_SECRET }}
     - name: Remove python cache
       run: rm -rf Python/__pycache__
-    - name: Set environment variable NOW for versioning
-      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
@@ -48,8 +50,6 @@ jobs:
         recursive_exclusions: "*.py"
     - name: Move ZIP file
       run: mv ../MurlokExport_v${{ env.NOW }}.zip .
-    - name: Set environment variable CHANGELOG
-      run: echo "CHANGELOG='$(cat Changelog.md)'" >> $GITHUB_ENV
     - name: Upload to CurseForge
       uses: itsmeow/curseforge-upload@v3
       with:
