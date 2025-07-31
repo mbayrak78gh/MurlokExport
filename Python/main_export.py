@@ -109,6 +109,7 @@ enchant_source = {
     6241: {'type': 'spell', 'id': 326805},
     6244: {'type': 'spell', 'id': 326977},
     6580: {'type': 'item', 'id': 200022},
+    6586: {'type': 'item', 'id': 200023},
     6592: {'type': 'item', 'id': 200031},
     6598: {'type': 'item', 'id': 200033},
     6604: {'type': 'item', 'id': 200032},
@@ -120,10 +121,12 @@ enchant_source = {
     6616: {'type': 'item', 'id': 200027},
     6619: {'type': 'item', 'id': 200028},
     6625: {'type': 'item', 'id': 200030},
+    6643: {'type': 'item', 'id': 200054},
     6654: {'type': 'item', 'id': 200058},
     7331: {'type': 'item', 'id': 223659},
     7334: {'type': 'item', 'id': 223662},
     7337: {'type': 'item', 'id': 223665},
+    7339: {'type': 'item', 'id': 223673},
     7340: {'type': 'item', 'id': 223674},
     7343: {'type': 'item', 'id': 223668},
     7345: {'type': 'item', 'id': 223676},
@@ -154,6 +157,7 @@ enchant_source = {
     7400: {'type': 'item', 'id': 223728},
     7402: {'type': 'item', 'id': 223730},
     7403: {'type': 'item', 'id': 223731},
+    7404: {'type': 'item', 'id': 223732},
     7406: {'type': 'item', 'id': 223734},
     7408: {'type': 'item', 'id': 223736},
     7409: {'type': 'item', 'id': 223737},
@@ -173,6 +177,7 @@ enchant_source = {
     7446: {'type': 'item', 'id': 223766},
     7447: {'type': 'item', 'id': 223767},
     7448: {'type': 'item', 'id': 223768},
+    7451: {'type': 'item', 'id': 223775},
     7453: {'type': 'item', 'id': 223777},
     7454: {'type': 'item', 'id': 223778},
     7457: {'type': 'item', 'id': 223772},
@@ -181,6 +186,7 @@ enchant_source = {
     7462: {'type': 'item', 'id': 223780},
     7463: {'type': 'item', 'id': 223781},
     7470: {'type': 'item', 'id': 223787},
+    7472: {'type': 'item', 'id': 223789},
     7473: {'type': 'item', 'id': 223790},
     7475: {'type': 'item', 'id': 223795},
     7476: {'type': 'item', 'id': 223796},
@@ -193,8 +199,8 @@ for content in contents:
     export = {}
     exports[content] = export
     for cls, config in classes.items():
-        # if cls not in ['paladin'] or content not in ['mm+']:
-        #     continue
+        if cls not in ['paladin'] or content not in ['mm+']:
+            continue
         export[cls] = {}
         for spec, heros in config.items():
             export[cls][spec] = {}

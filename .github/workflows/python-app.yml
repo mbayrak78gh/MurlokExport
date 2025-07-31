@@ -34,7 +34,7 @@ jobs:
         BNET_CLIENT_ID: ${{ secrets.BNET_CLIENT_ID }}
         BNET_CLIENT_SECRET: ${{ secrets.BNET_CLIENT_SECRET }}
     - name: Remove python cache
-      run: rm -rf __pycache__
+      run: rm -rf Python/__pycache__
     - name: Set environment variable NOW for versioning
       run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
     - name: Archive Release
@@ -44,7 +44,8 @@ jobs:
         filename: MurlokExport_v${{ env.NOW }}.zip
         directory: ..
         path: MurlokExport
-        exclusions: "*.git* Python/*.py"
+        exclusions: "*.git*"
+        recursive_exclusions: "*.py"
     - name: Move ZIP file
       run: mv ../MurlokExport_v${{ env.NOW }}.zip .
     - name: Upload to CurseForge
@@ -55,5 +56,5 @@ jobs:
         game_endpoint: wow
         game_versions: "11.1.7"
         project_id: "1273867"
-        changelog: $(cat Changelog.md)
+        changelog: ${{ cat Changelog.md }}
         token: ${{ secrets.CF_API_TOKEN }}
