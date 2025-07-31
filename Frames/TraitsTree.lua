@@ -2,7 +2,11 @@ local _, core = ...
 
 TraitsTreeFrameMixin = {}
 function TraitsTreeFrameMixin:OnLoad()
-	self:SetTabs(self.TraitsInset, 4, "Class Traits", "Spec Traits", "Hero Traits", "PvP Traits")
+	self:SetTabs(self.TraitsInset, 4, MURLOKEXPORT_TRAITS_CLASS, MURLOKEXPORT_TRAITS_SPECIALIZATION, MURLOKEXPORT_TRAITS_HERO, MURLOKEXPORT_TRAITS_PVP)
+end
+
+function TraitsTreeFrameMixin:OnShow()
+	self:SelectedTabOnClick()
 end
 
 function TraitsTreeFrameMixin:OnClick(hero_atlas)
@@ -19,6 +23,11 @@ function TraitsTreeFrameMixin:SelectedTabOnClick()
 end
 
 function TraitsTreeFrameMixin:TabOnClick(tab)
+	-- if self.traits.tabId == tab:GetID() then
+	-- 	return
+	-- end
+
+	self.traits.tabId = tab:GetID()
 	PanelTemplates_SetTab(self.TraitsInset, tab:GetID())
 
 	if not UIMurlokExport.ClassListFrame.activeSpecId or not UIMurlokExport.ClassListFrame.activeStats then
@@ -31,7 +40,6 @@ function TraitsTreeFrameMixin:TabOnClick(tab)
 
 	if tab:GetID() ~= 4 then
 		local configId = Constants.TraitConsts.VIEW_TRAIT_CONFIG_ID
-		self.traits.tabId = tab:GetID()
 		self.traits:SetConfigID(configId)
 		self.traits:SetTalentTreeID(C_ClassTalents.GetTraitTreeForSpec(UIMurlokExport.ClassListFrame.activeSpecId), true)
 	else
@@ -45,12 +53,12 @@ function TraitsTreeFrameMixin:SetTabs(frame, numTabs, ...)
 
 	local frameName = frame:GetName()
 	for i = 1, numTabs do
-		local tab = CreateFrame("Button", frameName .. "TraitsTab" .. i, frame, "CharacterFrameTabTemplate")
+		local tab = CreateFrame("Button", frameName .. "TraitsTab" .. i, frame, "PanelTopTabButtonTemplate")
 		tab:SetID(i)
 		tab:SetText(select(i, ...))
 		tab:SetScript("OnClick", function() self:TabOnClick(tab) end)
 		if (i == 1) then
-			tab:SetPoint("TOPLEFT", frame, "BOTTOMLEFT", 5, -12)
+			tab:SetPoint("TOPLEFT", frame, "BOTTOMLEFT", 5, 36)
 		else
 			tab:SetPoint("TOPLEFT", _G[frameName .. "TraitsTab" .. (i - 1)], "TOPRIGHT", 5, 0)
 		end

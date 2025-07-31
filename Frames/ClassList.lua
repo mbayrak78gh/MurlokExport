@@ -115,7 +115,7 @@ end
 
 ClassListFrameMixin = {}
 function ClassListFrameMixin:OnLoad()
-	self:SetTabs(self.ClassInset, 2, "Mythic+", "Solo PvP")
+	self:SetTabs(self.ClassInset, 2, MURLOKEXPORT_TAB_MYTHIC_PLUS, MURLOKEXPORT_TAB_SOLO_PVP)
 
 	local classView = CreateScrollBoxListLinearView()
 	classView:SetElementInitializer("ClassListButtonTemplate", function(button, elementData) self:InitClassButton(button, elementData) end)
@@ -146,9 +146,11 @@ function ClassListFrameMixin:UpdateClassList(content)
 			index = self:InsertSpec(index, newDataProvider, class, config)
 		end
 	end
-	for class, config in core:Pairs(MurlokExport[content]) do
-		if ClassConfig[class].class.id ~= classId then
-			index = self:InsertSpec(index, newDataProvider, class, config)
+	if not MurlokExportConfig.ShowOnlyCurrentClass then
+		for class, config in core:Pairs(MurlokExport[content]) do
+			if ClassConfig[class].class.id ~= classId then
+				index = self:InsertSpec(index, newDataProvider, class, config)
+			end
 		end
 	end
 	self.ClassScrollBox:SetDataProvider(newDataProvider, ScrollBoxConstants.RetainScrollPosition)

@@ -29,7 +29,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
     - name: Export Murlok.io data
-      run: python main_export.py
+      run: python Python/main_export.py
       env: 
         BNET_CLIENT_ID: ${{ secrets.BNET_CLIENT_ID }}
         BNET_CLIENT_SECRET: ${{ secrets.BNET_CLIENT_SECRET }}
@@ -44,7 +44,7 @@ jobs:
         filename: MurlokExport_v${{ env.NOW }}.zip
         directory: ..
         path: MurlokExport
-        exclusions: "*.git* *.py"
+        exclusions: "*.git* Python/*.py"
     - name: Move ZIP file
       run: mv ../MurlokExport_v${{ env.NOW }}.zip .
     - name: Upload to CurseForge
@@ -55,5 +55,5 @@ jobs:
         game_endpoint: wow
         game_versions: "11.1.7"
         project_id: "1273867"
-        changelog: ${{ github.event.head_commit.message }}
+        changelog: $(cat Changelog.md)
         token: ${{ secrets.CF_API_TOKEN }}

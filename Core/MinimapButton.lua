@@ -18,7 +18,7 @@ local function OnTooltipShow(tooltip, button)
 		tooltipIcon.icon.Border = tooltipIcon:CreateTexture(nil, "BORDER")
 		tooltipIcon.icon.Border:SetAllPoints(tooltipIcon)
 		tooltipIcon.icon.Border:Show()
-		tooltipIcon.icon:SetTexture(core:Asset("MurlokExport"))
+		tooltipIcon.icon:SetTexture(core:Artwork(MURLOKEXPORT_TITLE))
 		tooltip.icon = tooltipIcon
 	end
 
@@ -26,7 +26,7 @@ local function OnTooltipShow(tooltip, button)
 		tooltip.icon:Show()
 	end
 
-	tooltip:AddLine("Murlok Export", 1, 1, 1)
+	tooltip:AddLine(MURLOKEXPORT_TITLE, 1, 1, 1)
 	tooltip:AddLine("Simple addon to display Murlok.io rated Mythic+ or PvP data", 0.4, 0.8, 1, 1)
 end
 
@@ -52,14 +52,22 @@ local function OnLeave(button)
 	dbIcon.tooltip:Hide()
 end
 
-local dataObject = LibStub("LibDataBroker-1.1"):NewDataObject("Murlok Export", {
+local function OnClick(self, button)
+	if button=="LeftButton" then
+		core:Toggle()
+	else
+		UIMurlokExport:SetShown(false)
+		UIMurlokExport.OptionsPanel:Open()
+	end
+end
+
+local dataObject = LibStub("LibDataBroker-1.1"):NewDataObject(MURLOKEXPORT_TITLE, {
 	type = "data source",
-	text = "Murlok Export",
-	icon = core:Asset("MurlokExport"),
-	OnClick = function() core:Toggle() end,
+	text = MURLOKEXPORT_TITLE,
+	icon = core:Artwork(MURLOKEXPORT_TITLE),
+	OnClick = OnClick,
 	OnEnter = OnEnter,
 	OnLeave = OnLeave
 })
 
-
-dbIcon:Register("Murlok Export", dataObject)
+dbIcon:Register(MURLOKEXPORT_TITLE, dataObject)

@@ -1,5 +1,4 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
 	<Script file="EquipmentsList.lua"/>
 
   	<ItemButton name="EquipmentsItemSlotButtonTemplate" inherits="EnchantingItemButtonAnimTemplate" mixin="EnchantingItemButtonAnimMixin, EnchantingItemButtonMixin" virtual="true">
@@ -46,7 +45,7 @@
 	</ItemButton>
 
 	<Frame name="EquipmentsListTemplate" setAllPoints="true" inherits="TooltipBorderBackdropTemplate" virtual="true">
-		<Size x="450" y="150"/>
+		<Size x="450" y="200"/>
 		<Layers>
 			<Layer level="BACKGROUND">
 				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" parentKey="background">
@@ -130,10 +129,25 @@
 		</Layers>
 		
 		<Frames>
+			<Frame name="$parentItemTextFrame" parentKey="itemTextFrame">
+				<Size x="60" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.topLeftTsunami" x="-15" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY" textureSubLevel="1">
+						<FontString name="$parentText" inherits="GameFontNormal" parentKey="text" text="MURLOKEXPORT_EQUIPMENT_ITEMS">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+            </Frame>
 			<ItemButton parentKey="itemButton1" inherits="EquipmentsItemSlotButtonTemplate">
 				<Size x="37" y="37"/>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.topLeftTsunami" x="-10" y="-20"/>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.itemTextFrame" x="5"/>
 				</Anchors>
 			</ItemButton>
 			<ItemButton parentKey="itemButton2" inherits="EquipmentsItemSlotButtonTemplate">		
@@ -161,10 +175,71 @@
 				</Anchors>
 			</ItemButton>
 
+			<Frame name="$parentEnchantTextFrame" parentKey="enchantTextFrame">
+				<Size x="60" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeKey="$parent.itemTextFrame" x="0" y="-10"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY" textureSubLevel="1">
+						<FontString name="$parentText" inherits="GameFontNormal" parentKey="text" text="MURLOKEXPORT_EQUIPMENT_ENCHANTS">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+            </Frame>			
+			<ItemButton parentKey="enchantButton1" inherits="EquipmentsItemSlotButtonTemplate">		
+				<Size x="37" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.enchantTextFrame" x="5"/>
+				</Anchors>
+			</ItemButton>
+			<ItemButton parentKey="enchantButton2" inherits="EquipmentsItemSlotButtonTemplate">		
+				<Size x="37" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.enchantButton1" x="5"/>
+				</Anchors>
+			</ItemButton>
+			<ItemButton parentKey="enchantButton3" inherits="EquipmentsItemSlotButtonTemplate">		
+				<Size x="37" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.enchantButton2" x="5"/>
+				</Anchors>
+			</ItemButton>
+			<ItemButton parentKey="enchantButton4" inherits="EquipmentsItemSlotButtonTemplate">		
+				<Size x="37" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.enchantButton3" x="5"/>
+				</Anchors>
+			</ItemButton>
+			<ItemButton parentKey="enchantButton5" inherits="EquipmentsItemSlotButtonTemplate">		
+				<Size x="37" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.enchantButton4" x="5"/>
+				</Anchors>
+			</ItemButton>
+
+			<Frame name="$parentGemTextFrame" parentKey="gemTextFrame">
+				<Size x="60" y="37"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeKey="$parent.enchantTextFrame" x="0" y="-10"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY" textureSubLevel="1">
+						<FontString name="$parentText" inherits="GameFontNormal" parentKey="text" text="MURLOKEXPORT_EQUIPMENT_GEMS">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+            </Frame>		
 			<ItemButton parentKey="gemButton1" inherits="EquipmentsItemSlotButtonTemplate">		
 				<Size x="37" y="37"/>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeKey="$parent.itemButton1" x="0" y="-10"/>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.gemTextFrame" x="5"/>
 				</Anchors>
 			</ItemButton>
 			<ItemButton parentKey="gemButton2" inherits="EquipmentsItemSlotButtonTemplate">		
@@ -265,7 +340,7 @@
 						</Texture>
 					</Layer>
 					<Layer level="OVERLAY">
-						<FontString name="$parentSlotHeaderText" inherits="GameFontNormal" justifyH="CENTER" text="Equipment">
+						<FontString name="$parentSlotHeaderText" inherits="GameFontNormal" justifyH="CENTER" text="MURLOKEXPORT_CATEGORY_EQUIPMENT">
 							<Size x="0" y="40"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" relativeTo="$parentTop" x="0" y="-4"/>

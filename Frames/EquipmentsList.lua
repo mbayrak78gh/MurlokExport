@@ -35,19 +35,20 @@ function EquipmentsListFrameMixin:InitEquipmentFrame(frame, elementData)
 	local enchants = {}
 	for k, v in core:IPairs(elementData.equipment.enchantments, function (k1, k2) return k1[2].count > k2[2].count end) do
 		enchants[index] = k
+		index = index + 1
 	end
 
 	index  = 1
 	for k, v in core:IPairs(elementData.equipment.items, function (k1, k2) return k1[2].count > k2[2].count end) do
 		local bonus = ""
-		if v.bonus then 
+		if v.bonus then
 			bonus = #v.bonus .. ":" .. table.concat(v.bonus, ":")
 		end
 		local enchant = ""
 		if enchants[index] then
 			enchant = enchants[index]
 		end
-		local link = ( "|Hitem:" .. k .. ":" .. enchant .. "::::::::" .. elementData.specId .. ":::" .. bonus .. "|h")
+		local link = "|Hitem:" .. k .. ":" .. enchant .. "::::::::" .. elementData.specId .. ":::" .. bonus .. "|h"
 		frame["itemButton" .. index]:SetItem(link)
 		frame["itemButton" .. index].Count:SetText(core:getRankColor(v.rank)  ..  v.count  ..  "|r")
 		frame["itemButton" .. index].Count:Show()
@@ -56,23 +57,57 @@ function EquipmentsListFrameMixin:InitEquipmentFrame(frame, elementData)
 	end
 	for i=index,5 do
 		frame["itemButton" .. i]:SetItem(nil)
-		frame["itemButton" .. i]:SetItemButtonCount(0)
-		frame["itemButton" .. i]:Hide()
+		frame["itemButton" .. i].icon:Show()
+		frame["itemButton" .. i].icon:SetAtlas("bags-item-slot64")
+	end
+
+	index = 1
+	for k, v in core:IPairs(elementData.equipment.enchantments, function (k1, k2) return k1[2].count > k2[2].count end) do
+		local link = nil
+		if v.source and v.source.type == "item" then
+			link = "|Hitem:" .. (v.source.id) .. "::::::::::::|h"
+			frame["enchantButton" .. index]:SetItem(link)
+			frame["enchantButton" .. index].Count:SetText(core:getRankColor(v.rank)  ..  v.count  ..  "|r")
+			frame["enchantButton" .. index].Count:Show()
+		elseif v.source and v.source.type == "spell" then
+			link = C_Spell.GetSpellLink(v.source.id)
+			frame["enchantButton" .. index]:SetItemSource(nil)
+			frame["enchantButton" .. index].item = link
+			local rank = 1
+			if v.rank == 0 then 
+				rank = 5 
+			elseif v.rank >= 1 and v.rank < 5 then 
+				rank = 4 
+			end
+			frame["enchantButton" .. index]:SetItemButtonQuality(rank, link)
+			frame["enchantButton" .. index]:SetItemButtonTexture(C_Spell.GetSpellTexture(v.source.id))
+			frame["enchantButton" .. index].Count:SetText(core:getRankColor(v.rank)  ..  v.count  ..  "|r")
+			frame["enchantButton" .. index].Count:Show()
+		else
+			frame["enchantButton" .. index]:SetItem(nil)
+			frame["enchantButton" .. index].icon:Show()
+			frame["enchantButton" .. index].icon:SetAtlas("bags-item-slot64")
+		end
+		index = index + 1
+	end
+	for i=index,5 do
+		frame["enchantButton" .. i]:SetItem(nil)
+		frame["enchantButton" .. i].icon:Show()
+		frame["enchantButton" .. i].icon:SetAtlas("bags-item-slot64")
 	end
 
 	index = 1
 	for k, v in core:IPairs(elementData.equipment.gems, function (k1, k2) return k1[2].count > k2[2].count end) do
-		local link = ( "|Hitem:" .. k .. "|h")
+		local link = ("|Hitem:" .. k .. "|h")
 		frame["gemButton" .. index]:SetItem(link)
 		frame["gemButton" .. index].Count:SetText(core:getRankColor(v.rank)  ..  v.count  ..  "|r")
 		frame["gemButton" .. index].Count:Show()
-		frame["gemButton" .. index]:Show()
 		index = index + 1
 	end
 	for i=index,5 do
 		frame["gemButton" .. i]:SetItem(nil)
-		frame["gemButton" .. i]:SetItemButtonCount(0)
-		frame["gemButton" .. i]:Hide()
+		frame["gemButton" .. i].icon:Show()
+		frame["gemButton" .. i].icon:SetAtlas("bags-item-slot64")
 	end
 end
 
@@ -90,8 +125,8 @@ function EquipmentsListFrameMixin:OnClick(stats, specId)
     	index = index + 1
     end
     self.EquipmentsScrollBox:SetDataProvider(equipmentsDataProvider, ScrollBoxConstants.RetainScrollPosition)
-    self:Hide()
-    self:Show()
+    -- self:Hide()
+    -- self:Show()
 end
 
 EnchantingItemButtonMixin = CreateFromMixins(EnchantingItemButtonAnimMixin)

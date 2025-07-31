@@ -10,7 +10,7 @@ def space_str(layer):
 def dic_to_lua_str(data, prettyPrint=True, layer = 0):
 	result = []
 	if  isinstance(data, str):
-		result.append("'" + data + "'")
+		result.append("\"" + data + "\"")
 	elif isinstance(data, bool):
 		if data:
 			result.append('true')

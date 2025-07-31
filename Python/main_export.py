@@ -1,3 +1,4 @@
+import json
 import requests
 import os
 import json_to_lua
@@ -99,6 +100,94 @@ if oauth_res.status_code != 200:
     raise Exception('Token for BNET couldn\'t be fetched')
 bnet_token = oauth_res.json()['access_token']
 
+
+enchant_source = {
+    3368: {'type': 'spell', 'id': 53344},
+    3370: {'type': 'spell', 'id': 53343},
+    3847: {'type': 'spell', 'id': 62158},
+    6088: {'type': 'spell', 'id': 279183},
+    6241: {'type': 'spell', 'id': 326805},
+    6244: {'type': 'spell', 'id': 326977},
+    6580: {'type': 'item', 'id': 200022},
+    6592: {'type': 'item', 'id': 200031},
+    6598: {'type': 'item', 'id': 200033},
+    6604: {'type': 'item', 'id': 200032},
+    6606: {'type': 'item', 'id': 199976},
+    6607: {'type': 'item', 'id': 200018},
+    6612: {'type': 'item', 'id': 199978},
+    6613: {'type': 'item', 'id': 200020},
+    6615: {'type': 'item', 'id': 199985},
+    6616: {'type': 'item', 'id': 200027},
+    6619: {'type': 'item', 'id': 200028},
+    6625: {'type': 'item', 'id': 200030},
+    6654: {'type': 'item', 'id': 200058},
+    7331: {'type': 'item', 'id': 223659},
+    7334: {'type': 'item', 'id': 223662},
+    7337: {'type': 'item', 'id': 223665},
+    7340: {'type': 'item', 'id': 223674},
+    7343: {'type': 'item', 'id': 223668},
+    7345: {'type': 'item', 'id': 223676},
+    7346: {'type': 'item', 'id': 223677},
+    7348: {'type': 'item', 'id': 128544},
+    7349: {'type': 'item', 'id': 223671},
+    7351: {'type': 'item', 'id': 223679},
+    7352: {'type': 'item', 'id': 223680},
+    7354: {'type': 'item', 'id': 223682},
+    7355: {'type': 'item', 'id': 223683},
+    7357: {'type': 'item', 'id': 223685},
+    7358: {'type': 'item', 'id': 223686},
+    7360: {'type': 'item', 'id': 223688},
+    7361: {'type': 'item', 'id': 223689},
+    7363: {'type': 'item', 'id': 223691},
+    7364: {'type': 'item', 'id': 223692},
+    7380: {'type': 'item', 'id': 223708},
+    7381: {'type': 'item', 'id': 223709},
+    7382: {'type': 'item', 'id': 223710},
+    7384: {'type': 'item', 'id': 223712},
+    7385: {'type': 'item', 'id': 223713},
+    7388: {'type': 'item', 'id': 223716},
+    7390: {'type': 'item', 'id': 223718},
+    7391: {'type': 'item', 'id': 223719},
+    7394: {'type': 'item', 'id': 223722},
+    7396: {'type': 'item', 'id': 223724},
+    7397: {'type': 'item', 'id': 223725},
+    7400: {'type': 'item', 'id': 223728},
+    7402: {'type': 'item', 'id': 223730},
+    7403: {'type': 'item', 'id': 223731},
+    7406: {'type': 'item', 'id': 223734},
+    7408: {'type': 'item', 'id': 223736},
+    7409: {'type': 'item', 'id': 223737},
+    7412: {'type': 'item', 'id': 223740},
+    7414: {'type': 'item', 'id': 223799},
+    7415: {'type': 'item', 'id': 223800},
+    7417: {'type': 'item', 'id': 223652},
+    7418: {'type': 'item', 'id': 223653},
+    7421: {'type': 'item', 'id': 223650},
+    7423: {'type': 'item', 'id': 223655},
+    7424: {'type': 'item', 'id': 223656},
+    7439: {'type': 'item', 'id': 223759},
+    7440: {'type': 'item', 'id': 223760},
+    7441: {'type': 'item', 'id': 223761},
+    7442: {'type': 'item', 'id': 223762},
+    7445: {'type': 'item', 'id': 223765},
+    7446: {'type': 'item', 'id': 223766},
+    7447: {'type': 'item', 'id': 223767},
+    7448: {'type': 'item', 'id': 223768},
+    7453: {'type': 'item', 'id': 223777},
+    7454: {'type': 'item', 'id': 223778},
+    7457: {'type': 'item', 'id': 223772},
+    7460: {'type': 'item', 'id': 223784},
+    7461: {'type': 'item', 'id': 223779},
+    7462: {'type': 'item', 'id': 223780},
+    7463: {'type': 'item', 'id': 223781},
+    7470: {'type': 'item', 'id': 223787},
+    7473: {'type': 'item', 'id': 223790},
+    7475: {'type': 'item', 'id': 223795},
+    7476: {'type': 'item', 'id': 223796},
+    7478: {'type': 'item', 'id': 223792},
+    7479: {'type': 'item', 'id': 223793},
+}
+missing_enchants = {}
 exports = {}
 for content in contents:
     export = {}
@@ -169,7 +258,7 @@ for content in contents:
                     if 'Items' in char['Equipment']:
                         for item in char['Equipment']['Items']:
                             id = item['ItemID']
-                            if id > 0:
+                            if id > 0 and ('RequiredLevel' not in item or item['RequiredLevel'] >= 80 ) and ('ILevel' not in item or item['ILevel'] >= 600):
                                 slot = item['Slot']
                                 if slot not in equips:
                                     equips[slot] = {'items': {}, 'gems': {}, 'enchantments': {}}
@@ -194,6 +283,7 @@ for content in contents:
                                         if id > 0:
                                             if id not in equips[slot]['enchantments']:
                                                 equips[slot]['enchantments'][id] = {'count': 0, 'rank': i}
+                                                equips[slot]['enchantments'][id]['charAPI'] = f'https://{char["Region"]}.api.blizzard.com/profile/wow/character/{quote_plus(char["RealmSlug"])}/{quote_plus(char["Slug"])}/equipment?namespace=profile-{char["Region"]}&locale=en_US'
                                             equips[slot]['enchantments'][id]['count'] += 1
                                             
                     for trait in char['ClassTalents']:
@@ -248,33 +338,59 @@ for content in contents:
                     equip["order"] = order
                     order += 1
 
-                bnet_chars = {}
-                for slot, equip in equips.items():
-                    for item_id, counts in equip['items'].items():
-                        charAPI = counts['charAPI']
-                        print(content, cls, spec, hero_name, slot, item_id, charAPI)
-                        if charAPI not in bnet_chars:
-                            response = requests.get(counts['charAPI'], headers={'Authorization': f'Bearer {bnet_token}'})
-                            if response.status_code == 200:
-                                body = response.json()
-                                if 'equipped_items' in body:
-                                    bnet_chars[charAPI] = response.json()['equipped_items']
-                                else:
-                                    print('missing items', response.status_code, slot, item_id, charAPI)
+                bnet_chars = {}                
+                def loadChar(charAPI):                    
+                    # print(content, cls, spec, hero_name, slot, item_id, charAPI)
+                    if charAPI not in bnet_chars:
+                        response = requests.get(charAPI, headers={'Authorization': f'Bearer {bnet_token}'})
+                        if response.status_code == 200:
+                            body = response.json()
+                            if 'equipped_items' in body:
+                                bnet_chars[charAPI] = response.json()['equipped_items']
                             else:
-                                print(response.status_code, slot, item_id, charAPI)
-                        
-                        if charAPI in bnet_chars:
-                            bnet_items = bnet_chars[charAPI]
+                                print('missing items', response.status_code, slot, enchant_id, charAPI)
+                                return False
+                        else:
+                            print(response.status_code, slot, enchant_id, charAPI)
+                            return False
+                    return True           
+
+                for slot, equip in equips.items():
+                    for enchant_id, counts in equip['items'].items():                        
+                        if loadChar(counts['charAPI']):
+                            bnet_items = bnet_chars[counts['charAPI']]
                             for bnet_item in bnet_items:
+                                # if 'requirements' in bnet_item and bnet_item['requirements']['level']['value'] < 70:
+                                #     del equip['items'][enchant_id]
                                 if bnet_item['slot']['name'].lower() == slot.replace('-', ' ') and 'bonus_list' in bnet_item:
                                     counts['bonus'] = bnet_item['bonus_list']
+                        del counts['charAPI']
+                                        
+                    for enchant_id, counts in equip['enchantments'].items():                        
+                        if loadChar(counts['charAPI']):
+                            bnet_items = bnet_chars[counts['charAPI']]
+                            for bnet_item in bnet_items:
+                                if bnet_item['slot']['name'].lower() == slot.replace('-', ' ') and 'enchantments' in bnet_item:
+                                        for enchant in bnet_item['enchantments']:
+                                            if enchant['enchantment_slot']['type'] == 'PERMANENT' and enchant['enchantment_id'] == enchant_id:
+                                                if 'source_item' in enchant:
+                                                    counts['source'] = {'type': 'item', 'id': enchant['source_item']['id']}
+                                                elif enchant_id in enchant_source:
+                                                    counts['source'] = enchant_source[enchant_id]
+                                                else:
+                                                    if enchant_id not in missing_enchants:
+                                                        print('[Not found]', enchant_id, enchant['display_string'])
+                                                        missing_enchants[enchant_id] = enchant['display_string']
+                        del counts['charAPI']
 
                 stats['equips'] = equips
                 export[cls][spec][hero_name] = stats
 
-with open('Export.lua', 'w') as file:
+with open('Python/Export.lua', 'w') as file:
     exports['timestamp'] = datetime.now(timezone.utc).isoformat()
     lua_export = ''.join(json_to_lua.dic_to_lua_str(exports, False))
     file.writelines(f'MurlokExport = {lua_export}')
   
+with open('Python/MissingEnchants.lua', 'w') as file:
+    file.writelines(''.join(json_to_lua.dic_to_lua_str({key: value for key, value in sorted(missing_enchants.items())})))
+    

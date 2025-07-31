@@ -1,5 +1,4 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
 	<Script file="Stats.lua"/>
 
     <Frame name="StatsFrameTemplate" virtual="true" mixin="StatsFrameMixin">
@@ -72,7 +71,7 @@
 						</Texture>
 					</Layer>
 					<Layer level="OVERLAY">
-						<FontString name="$parentSlotHeaderText" inherits="GameFontNormal" justifyH="CENTER" text="Stats">
+						<FontString name="$parentSlotHeaderText" inherits="GameFontNormal" justifyH="CENTER" text="MURLOKEXPORT_CATEGORY_STATS">
 							<Size x="0" y="40"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" relativeTo="$parentTop" x="0" y="-4"/>
@@ -119,13 +118,13 @@
 				</Anchors>
 				<Layers>     
 					<Layer level="OVERLAY" textureSubLevel="1">						
-						<FontString name="$parentSecStats" inherits="GameFontNormal" parentKey="secStats" text="Secondary">
+						<FontString name="$parentSecStats" inherits="GameFontNormal" parentKey="secStats" text="MURLOKEXPORT_STATS_SECONDARY">
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" x="10" y="-75"/>
 							</Anchors>
 						</FontString>
 
-						<Texture parentKey="secStatIcon1" file="Interface/AddOns/MurlokExport/assets/Attribute_mastery">
+						<Texture parentKey="secStatIcon1" file="Interface/AddOns/MurlokExport/Artwork/Attribute_mastery">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeKey="$parent.secStats" x="75" y="-5"/>
@@ -144,7 +143,7 @@
 							<Color r="1" g="1" b="1" a="1"/>
 						</FontString>
 
-						<Texture parentKey="secStatIcon2" file="Interface/AddOns/MurlokExport/assets/Attribute_versatility">
+						<Texture parentKey="secStatIcon2" file="Interface/AddOns/MurlokExport/Artwork/Attribute_versatility">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" relativeKey="$parent.secStatIcon1" x="35"/>
@@ -163,7 +162,7 @@
 							<Color r="1" g="1" b="1" a="1"/>
 						</FontString>
 
-						<Texture parentKey="secStatIcon3" file="Interface/AddOns/MurlokExport/assets/Attribute_haste">
+						<Texture parentKey="secStatIcon3" file="Interface/AddOns/MurlokExport/Artwork/Attribute_haste">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" relativeKey="$parent.secStatIcon2" x="35"/>
@@ -182,7 +181,7 @@
 							<Color r="1" g="1" b="1" a="1"/>
 						</FontString>
 
-						<Texture parentKey="secStatIcon4" file="Interface/AddOns/MurlokExport/assets/Attribute_crit">
+						<Texture parentKey="secStatIcon4" file="Interface/AddOns/MurlokExport/Artwork/Attribute_crit">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" relativeKey="$parent.secStatIcon3" x="35"/>
@@ -196,13 +195,13 @@
 						</FontString>
 
 						
-						<FontString name="$parentMinorStats" inherits="GameFontNormal" parentKey="minorStats" text="Minor">
+						<FontString name="$parentMinorStats" inherits="GameFontNormal" parentKey="minorStats" text="MURLOKEXPORT_STATS_MINOR">
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" x="10" y="-200"/>
 							</Anchors>
 						</FontString>
 
-						<Texture parentKey="minorStatIcon1" file="Interface/AddOns/MurlokExport/assets/Attribute_leech">
+						<Texture parentKey="minorStatIcon1" file="Interface/AddOns/MurlokExport/Artwork/Attribute_leech">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeKey="$parent.minorStats" x="75" y="-5"/>
@@ -221,7 +220,7 @@
 							<Color r="1" g="1" b="1" a="1"/>
 						</FontString>
 
-						<Texture parentKey="minorStatIcon2" file="Interface/AddOns/MurlokExport/assets/Attribute_avoidance">
+						<Texture parentKey="minorStatIcon2" file="Interface/AddOns/MurlokExport/Artwork/Attribute_avoidance">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" relativeKey="$parent.minorStatIcon1" x="35"/>
@@ -240,7 +239,7 @@
 							<Color r="1" g="1" b="1" a="1"/>
 						</FontString>
 
-						<Texture parentKey="minorStatIcon3" file="Interface/AddOns/MurlokExport/assets/Attribute_speed">
+						<Texture parentKey="minorStatIcon3" file="Interface/AddOns/MurlokExport/Artwork/Attribute_speed">
 							<Size x="50" y="50"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" relativeKey="$parent.minorStatIcon2" x="35"/>
@@ -259,7 +258,7 @@
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" relativeKey="$parent.minorStatIcon3" x="35"/>
 							</Anchors>
 						</Texture>
-						<FontString name="$parentRatingStats" inherits="GameFontNormal" parentKey="ratingStats" text="Rating">
+						<FontString name="$parentRatingStats" inherits="GameFontNormal" parentKey="ratingStats" text="MURLOKEXPORT_RATING">
 							<Anchors>
 								<Anchor point="TOP" relativeKey="$parent.ratingStatIcon" relativePoint="BOTTOM" y="-5"/>
 							</Anchors>

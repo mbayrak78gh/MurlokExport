@@ -40,15 +40,15 @@ function StatsFrameMixin:OnClick(stats)
 
     local index = 1
     for k, v in core:IPairs(stats.secondary_stats, function (k1, k2) return k1 ~= nil and k2 ~= nil and k1[2].value > k2[2].value end) do
-        self.stats["secStatIcon" .. index]:SetTexture(core:Asset("Attribute_" .. k))
-        self.stats["secStatName" .. index]:SetText(core:Capitialize(k) .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
+        self.stats["secStatIcon" .. index]:SetTexture(core:Artwork("Attribute_" .. k))
+        self.stats["secStatName" .. index]:SetText(L["MURLOKEXPORT_STATS_" .. string.upper(k)] .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
         index = index + 1
     end
 
     local index = 1
     for k, v in core:IPairs(stats.minor_stats, function (k1, k2) return k1 ~= nil and k2 ~= nil and k1[2].value > k2[2].value end) do
-        self.stats["minorStatIcon" .. index]:SetTexture(core:Asset("Attribute_" .. k))
-        self.stats["minorStatName" .. index]:SetText(core:Capitialize(k) .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
+        self.stats["minorStatIcon" .. index]:SetTexture(core:Artwork("Attribute_" .. k))
+        self.stats["minorStatName" .. index]:SetText(L["MURLOKEXPORT_STATS_" .. string.upper(k)] .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
         index = index + 1
     end
     self.stats.ratingStatName:SetText(core:getRankColor(0) .. stats.rating .. "|r")

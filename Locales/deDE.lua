@@ -1,0 +1,32 @@
+local L = LibStub("AceLocale-3.0"):NewLocale("MurlokExport", "deDE")
+if ( not L ) then
+    return
+end
+
+L["MURLOKEXPORT_CATEGORY_EQUIPMENT"] = "Gegenstände"
+L["MURLOKEXPORT_CATEGORY_STATS"] = "Verstärkungen"
+L["MURLOKEXPORT_CATEGORY_TALENTS"] = "Talente"
+L["MURLOKEXPORT_CATEGORY_TRAITS"] = "Fähigkeiten"
+L["MURLOKEXPORT_DATA_EXPORT_TIME"] = "Datenexportzeit: "
+L["MURLOKEXPORT_EQUIPMENT_ENCHANTS"] = "Verz.:"
+L["MURLOKEXPORT_EQUIPMENT_GEMS"] = "Edelstein:"
+L["MURLOKEXPORT_EQUIPMENT_ITEMS"] = "Gegenst.:"
+L["MURLOKEXPORT_OPTIONS_COMPACT_VIEW"] = "Zeige MurlokExport in einer kompakten Darstellung."
+L["MURLOKEXPORT_OPTIONS_SHOW_ONLY_CURRENT_CLASS"] = "Zeige nur meine aktuelle Characterklasse an."
+L["MURLOKEXPORT_OPTIONS_SUBTEXT"] = "Diese Optionen erlauben Dir MurlokExport's Funktionsweise zu beeinflussen."
+L["MURLOKEXPORT_RATING"] = "Wertung"
+L["MURLOKEXPORT_STATS_AVOIDANCE"] = "Vermeidung"
+L["MURLOKEXPORT_STATS_CRIT"] = "Krit. Treffw."
+L["MURLOKEXPORT_STATS_HASTE"] = "Tempo"
+L["MURLOKEXPORT_STATS_LEECH"] = "Lebensraub"
+L["MURLOKEXPORT_STATS_MASTERY"] = "Meisterschaft"
+L["MURLOKEXPORT_STATS_MINOR"] = "Gering"
+L["MURLOKEXPORT_STATS_SECONDARY"] = "Sekundär"
+L["MURLOKEXPORT_STATS_SPEED"] = "Geschwindigkeit"
+L["MURLOKEXPORT_STATS_VERSATILITY"] = "Vielseitigkeit"
+L["MURLOKEXPORT_TAB_MYTHIC_PLUS"] = "Mythisch+"
+L["MURLOKEXPORT_TAB_SOLO_PVP"] = "Einzel PvP"
+L["MURLOKEXPORT_TRAITS_CLASS"] = "Klasse"
+L["MURLOKEXPORT_TRAITS_SPECIALIZATION"] = "Spezialisierung"
+L["MURLOKEXPORT_TRAITS_HERO"] = "Held"
+L["MURLOKEXPORT_TRAITS_PVP"] = "PvP"

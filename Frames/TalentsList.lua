@@ -36,6 +36,13 @@ function TalentsTryOutMixin:OnClick(button)
 		PlayerSpellsFrame:Show()
 		PlayerSpellsFrame:SetTab(PlayerSpellsFrame.talentTabID)
 		UIMurlokExport:Hide()
-		PlayerSpellsFrame.TalentsFrame:ImportLoadout(self.talentBox.EditBox:GetText(), "MurlokExport_".. date("%Y-%m-%dT%H:%M"))
+
+		local mode = ""
+		if UIMurlokExport.ClassListFrame.ClassInset.selectedTab == 1 then
+			mode = "mythic_plus_"
+		elseif UIMurlokExport.ClassListFrame.ClassInset.selectedTab == 2 then
+			mode = "solo_pvp_"
+		end
+		PlayerSpellsFrame.TalentsFrame:ImportLoadout(self.talentBox.EditBox:GetText(), "ME_" .. mode .. date("%Y-%m-%dT%H:%M"))
 	end
 end

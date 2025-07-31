@@ -1,3 +1,4 @@
 .vscode/launch.json
 .DS_Store
-Export.lua
+Python/Export.lua
+Python/MissingEnchants.lua

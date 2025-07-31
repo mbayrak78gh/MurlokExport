@@ -1,5 +1,4 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
 	<Script file="TraitsTree.lua"/>
 
 	<Button name="PvPTraitsButtonTemplate" mixin="PvPTraitsButtonMixin" virtual="true">
@@ -138,7 +137,7 @@
 						</Texture>
 					</Layer>
 					<Layer level="OVERLAY">
-						<FontString name="$parentSlotHeaderText" inherits="GameFontNormal" justifyH="CENTER" text="Traits">
+						<FontString name="$parentSlotHeaderText" inherits="GameFontNormal" justifyH="CENTER" text="MURLOKEXPORT_CATEGORY_TRAITS">
 							<Size x="0" y="40"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" relativeTo="$parentTop" x="0" y="-4"/>
@@ -260,5 +259,8 @@
 			</Frame>
 
         </Frames>
+		<Scripts>
+			<OnShow method="OnShow"/>
+		</Scripts>		
     </Frame>
 </Ui>
