@@ -36,7 +36,7 @@ jobs:
     - name: Remove python cache
       run: rm -rf Python/__pycache__
     - name: Set environment variable NOW for versioning
-      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV     
+      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
@@ -48,6 +48,8 @@ jobs:
         recursive_exclusions: "*.py"
     - name: Move ZIP file
       run: mv ../MurlokExport_v${{ env.NOW }}.zip .
+    - name: Set environment variable CHANGELOG
+      run: echo "CHANGELOG=$(cat Changelog.md)" >> $GITHUB_ENV
     - name: Upload to CurseForge
       uses: itsmeow/curseforge-upload@v3
       with:
@@ -56,5 +58,5 @@ jobs:
         game_endpoint: wow
         game_versions: "11.1.7"
         project_id: "1273867"
-        changelog: ${{ cat Changelog.md }}
+        changelog: ${{ env.CHANGELOG }}
         token: ${{ secrets.CF_API_TOKEN }}
