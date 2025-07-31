@@ -100,7 +100,6 @@ if oauth_res.status_code != 200:
     raise Exception('Token for BNET couldn\'t be fetched')
 bnet_token = oauth_res.json()['access_token']
 
-
 enchant_source = {
     3368: {'type': 'spell', 'id': 53344},
     3370: {'type': 'spell', 'id': 53343},
@@ -201,11 +200,16 @@ for content in contents:
     for cls, config in classes.items():
         # if cls not in ['paladin'] or content not in ['mm+']:
         #     continue
+
         export[cls] = {}
         for spec, heros in config.items():
             export[cls][spec] = {}
             for hero in heros:
                 hero_name = hero['name']
+
+                # if cls not in ['druid'] or content not in ['mm+'] or spec not in ['guardian'] or hero_name not in ['elune\'s-chosen']:
+                #     continue        
+
                 response = requests.get(f'{base_url}/{cls}/{spec}/{hero_name}/{content}')
                 if response.status_code != 200:
                     continue
@@ -376,17 +380,22 @@ for content in contents:
                         if loadChar(counts['charAPI']):
                             bnet_items = bnet_chars[counts['charAPI']]
                             for bnet_item in bnet_items:
-                                if bnet_item['slot']['name'].lower() == slot.replace('-', ' ') and 'enchantments' in bnet_item:
+                                if bnet_item['slot']['name'].lower() == slot.replace('-', ' '):
+                                    if 'enchantments' in bnet_item:
                                         for enchant in bnet_item['enchantments']:
                                             if enchant['enchantment_slot']['type'] == 'PERMANENT' and enchant['enchantment_id'] == enchant_id:
                                                 if 'source_item' in enchant:
                                                     counts['source'] = {'type': 'item', 'id': enchant['source_item']['id']}
                                                 elif enchant_id in enchant_source:
                                                     counts['source'] = enchant_source[enchant_id]
-                                                else:
-                                                    if enchant_id not in missing_enchants:
-                                                        print('[Not found]', enchant_id, enchant['display_string'])
-                                                        missing_enchants[enchant_id] = enchant['display_string']
+                                                elif enchant_id not in missing_enchants:
+                                                    print('[Not found]', enchant_id, enchant['display_string'])
+                                                    missing_enchants[enchant_id] = enchant['display_string']
+                                    elif enchant_id in enchant_source:
+                                        counts['source'] = enchant_source[enchant_id]
+                                    elif enchant_id not in missing_enchants:
+                                        print('[Not found]', enchant_id)
+                                        missing_enchants[enchant_id] = bnet_item['item']['id']
                         del counts['charAPI']
 
                 stats['equips'] = equips
