@@ -120,6 +120,7 @@ enchant_source = {
     6616: {'type': 'item', 'id': 200027},
     6619: {'type': 'item', 'id': 200028},
     6625: {'type': 'item', 'id': 200030},
+    6631: {'type': 'item', 'id': 200050},
     6643: {'type': 'item', 'id': 200054},
     6654: {'type': 'item', 'id': 200058},
     7331: {'type': 'item', 'id': 223659},
@@ -151,6 +152,7 @@ enchant_source = {
     7390: {'type': 'item', 'id': 223718},
     7391: {'type': 'item', 'id': 223719},
     7394: {'type': 'item', 'id': 223722},
+    7395: {'type': 'item', 'id': 223723},
     7396: {'type': 'item', 'id': 223724},
     7397: {'type': 'item', 'id': 223725},
     7400: {'type': 'item', 'id': 223728},
@@ -166,6 +168,7 @@ enchant_source = {
     7417: {'type': 'item', 'id': 223652},
     7418: {'type': 'item', 'id': 223653},
     7421: {'type': 'item', 'id': 223650},
+    7422: {'type': 'item', 'id': 223654},
     7423: {'type': 'item', 'id': 223655},
     7424: {'type': 'item', 'id': 223656},
     7439: {'type': 'item', 'id': 223759},
@@ -191,6 +194,8 @@ enchant_source = {
     7476: {'type': 'item', 'id': 223796},
     7478: {'type': 'item', 'id': 223792},
     7479: {'type': 'item', 'id': 223793},
+    7531: {'type': 'item', 'id': 222896},
+    7931: {'type': 'item', 'id': 239093},
 }
 missing_enchants = {}
 exports = {}
