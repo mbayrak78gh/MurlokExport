@@ -199,29 +199,4 @@ function UIMurlokExportMixin:OnShow()
 	end
 
 	self.ClassListFrame:OnShow()
-
-	-- add cancel/delete button to loadouts
-	local ls = PlayerSpellsFrame.TalentsFrame.LoadSystem
-	local f = ls.Dropdown
-	f.OnMenuOpened = function(dropdown)
-		local menu = dropdown.menu
-		local children = {menu:GetChildren()}
-		local index = 1
-		for i, child in ipairs(children) do
-			if child:GetObjectType() == "Button" then
-				local id = ls.possibleSelections[index]
-				index = index + 1
-				if ls:IsSelectionIDValidAndEnabled(id) then
-					local buttons = {child:GetChildren()}
-					local cancelButton = MenuTemplates.AttachAutoHideCancelButton(child)
-					cancelButton:SetPoint("RIGHT", buttons[1], "LEFT")
-					cancelButton:SetScript("OnClick", function()
-						C_ClassTalents.DeleteConfig(id)
-						menu:Close()
-					end)
-				end
-			end
-		end
-		f:TriggerEvent(f.Event.OnMenuOpen, f)
-	end
 end

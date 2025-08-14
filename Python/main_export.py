@@ -108,40 +108,57 @@ enchant_source = {
     6088: {'type': 'spell', 'id': 279183},
     6241: {'type': 'spell', 'id': 326805},
     6244: {'type': 'spell', 'id': 326977},
+    6245: {'type': 'spell', 'id': 327082},
+    6550: {'type': 'item', 'id': 200037},
+    6571: {'type': 'item', 'id': 200031},
+    6574: {'type': 'item', 'id': 200021},
     6580: {'type': 'item', 'id': 200022},
     6586: {'type': 'item', 'id': 200023},
     6592: {'type': 'item', 'id': 200031},
     6598: {'type': 'item', 'id': 200033},
     6604: {'type': 'item', 'id': 200032},
+    6605: {'type': 'item', 'id': 199934},
     6606: {'type': 'item', 'id': 199976},
     6607: {'type': 'item', 'id': 200018},
     6612: {'type': 'item', 'id': 199978},
     6613: {'type': 'item', 'id': 200020},
     6615: {'type': 'item', 'id': 199985},
     6616: {'type': 'item', 'id': 200027},
+    6618: {'type': 'item', 'id': 199986},
     6619: {'type': 'item', 'id': 200028},
     6625: {'type': 'item', 'id': 200030},
     6631: {'type': 'item', 'id': 200050},
+    6640: {'type': 'item', 'id': 200055},
+    6642: {'type': 'item', 'id': 200012},
     6643: {'type': 'item', 'id': 200054},
     6654: {'type': 'item', 'id': 200058},
+    6655: {'type': 'item', 'id': 200058},
     7331: {'type': 'item', 'id': 223659},
+    7333: {'type': 'item', 'id': 223661},
     7334: {'type': 'item', 'id': 223662},
+    7335: {'type': 'item', 'id': 225652},
+    7336: {'type': 'item', 'id': 223664},
     7337: {'type': 'item', 'id': 223665},
+    7338: {'type': 'item', 'id': 223672},
     7339: {'type': 'item', 'id': 223673},
     7340: {'type': 'item', 'id': 223674},
+    7341: {'type': 'item', 'id': 223666},
     7343: {'type': 'item', 'id': 223668},
     7345: {'type': 'item', 'id': 223676},
     7346: {'type': 'item', 'id': 223677},
     7348: {'type': 'item', 'id': 128544},
     7349: {'type': 'item', 'id': 223671},
+    7350: {'type': 'item', 'id': 223678},
     7351: {'type': 'item', 'id': 223679},
     7352: {'type': 'item', 'id': 223680},
     7354: {'type': 'item', 'id': 223682},
     7355: {'type': 'item', 'id': 223683},
+    7356: {'type': 'item', 'id': 223684},
     7357: {'type': 'item', 'id': 223685},
     7358: {'type': 'item', 'id': 223686},
     7360: {'type': 'item', 'id': 223688},
     7361: {'type': 'item', 'id': 223689},
+    7362: {'type': 'item', 'id': 223690},
     7363: {'type': 'item', 'id': 223691},
     7364: {'type': 'item', 'id': 223692},
     7380: {'type': 'item', 'id': 223708},
@@ -159,41 +176,59 @@ enchant_source = {
     7396: {'type': 'item', 'id': 223724},
     7397: {'type': 'item', 'id': 223725},
     7400: {'type': 'item', 'id': 223728},
+    7401: {'type': 'item', 'id': 223729},
     7402: {'type': 'item', 'id': 223730},
     7403: {'type': 'item', 'id': 223731},
     7404: {'type': 'item', 'id': 223732},
     7405: {'type': 'item', 'id': 223733},
     7406: {'type': 'item', 'id': 223734},
+    7407: {'type': 'item', 'id': 223735},
     7408: {'type': 'item', 'id': 223736},
     7409: {'type': 'item', 'id': 223737},
+    7410: {'type': 'item', 'id': 223738},
     7412: {'type': 'item', 'id': 223740},
+    7413: {'type': 'item', 'id': 223798},
     7414: {'type': 'item', 'id': 223799},
     7415: {'type': 'item', 'id': 223800},
+    7416: {'type': 'item', 'id': 223651},
     7417: {'type': 'item', 'id': 223652},
     7418: {'type': 'item', 'id': 223653},
+    7419: {'type': 'item', 'id': 223618},
+    7420: {'type': 'item', 'id': 223649},
     7421: {'type': 'item', 'id': 223650},
     7422: {'type': 'item', 'id': 223654},
     7423: {'type': 'item', 'id': 223655},
     7424: {'type': 'item', 'id': 223656},
+    7437: {'type': 'item', 'id': 223757},
+    7438: {'type': 'item', 'id': 223758},
     7439: {'type': 'item', 'id': 223759},
     7440: {'type': 'item', 'id': 223760},
     7441: {'type': 'item', 'id': 223761},
     7442: {'type': 'item', 'id': 223762},
+    7443: {'type': 'item', 'id': 223763},
+    7444: {'type': 'item', 'id': 223764},
     7445: {'type': 'item', 'id': 223765},
     7446: {'type': 'item', 'id': 223766},
     7447: {'type': 'item', 'id': 223767},
     7448: {'type': 'item', 'id': 223768},
+    7450: {'type': 'item', 'id': 223774},
     7451: {'type': 'item', 'id': 223775},
+    7452: {'type': 'item', 'id': 223776},
     7453: {'type': 'item', 'id': 223777},
     7454: {'type': 'item', 'id': 223778},
+    7455: {'type': 'item', 'id': 223770},
+    7456: {'type': 'item', 'id': 223771},
     7457: {'type': 'item', 'id': 223772},
+    7459: {'type': 'item', 'id': 223783},
     7460: {'type': 'item', 'id': 223784},
     7461: {'type': 'item', 'id': 223779},
     7462: {'type': 'item', 'id': 223780},
     7463: {'type': 'item', 'id': 223781},
+    7469: {'type': 'item', 'id': 223786},
     7470: {'type': 'item', 'id': 223787},
     7472: {'type': 'item', 'id': 223789},
     7473: {'type': 'item', 'id': 223790},
+    7474: {'type': 'item', 'id': 223794},
     7475: {'type': 'item', 'id': 223795},
     7476: {'type': 'item', 'id': 223796},
     7478: {'type': 'item', 'id': 223792},
@@ -271,7 +306,7 @@ for content in contents:
                     if i == 0:
                         stats['rating'] = char.get('RatingMM') if content == 'mm+' else char.get('RatingSoloShuffle')
 
-                    if len(stats['talents']) < 5:
+                    if len(stats['talents']) < 5 and 'TalentsCode' in char:
                         stats['talents'].append(char['TalentsCode'])
 
                     if 'Items' in char['Equipment']:
@@ -304,24 +339,27 @@ for content in contents:
                                                 equips[slot]['enchantments'][id] = {'count': 0, 'rank': i}
                                                 equips[slot]['enchantments'][id]['charAPI'] = f'https://{char["Region"]}.api.blizzard.com/profile/wow/character/{quote_plus(char["RealmSlug"])}/{quote_plus(char["Slug"])}/equipment?namespace=profile-{char["Region"]}&locale=en_US'
                                             equips[slot]['enchantments'][id]['count'] += 1
-                                            
-                    for trait in char['ClassTalents']:
-                        if trait['ID'] > 0:
-                            if trait['ID'] not in stats['traits']['class']:
-                                stats['traits']['class'][trait['ID']] = {'count': 0, 'rank': i}
-                            stats['traits']['class'][trait['ID']]['count'] += 1
 
-                    for trait in char['SpecializationTalents']:
-                        if trait['ID'] > 0:
-                            if trait['ID'] not in stats['traits']['spec']:
-                                stats['traits']['spec'][trait['ID']] = {'count': 0, 'rank': i}
-                            stats['traits']['spec'][trait['ID']]['count'] += 1
+                    if 'ClassTalents' in char:              
+                        for trait in char['ClassTalents']:
+                            if trait['ID'] > 0:
+                                if trait['ID'] not in stats['traits']['class']:
+                                    stats['traits']['class'][trait['ID']] = {'count': 0, 'rank': i}
+                                stats['traits']['class'][trait['ID']]['count'] += 1
 
-                    for trait in char['HeroTalents']:
-                        if trait['ID'] > 0:
-                            if trait['ID'] not in stats['traits']['hero']:
-                                stats['traits']['hero'][trait['ID']] = {'count': 0, 'rank': i}
-                            stats['traits']['hero'][trait['ID']]['count'] += 1                        
+                    if 'SpecializationTalents' in char:
+                        for trait in char['SpecializationTalents']:
+                            if trait['ID'] > 0:
+                                if trait['ID'] not in stats['traits']['spec']:
+                                    stats['traits']['spec'][trait['ID']] = {'count': 0, 'rank': i}
+                                stats['traits']['spec'][trait['ID']]['count'] += 1
+
+                    if 'HeroTalents' in char:
+                        for trait in char['HeroTalents']:
+                            if trait['ID'] > 0:
+                                if trait['ID'] not in stats['traits']['hero']:
+                                    stats['traits']['hero'][trait['ID']] = {'count': 0, 'rank': i}
+                                stats['traits']['hero'][trait['ID']]['count'] += 1                        
 
                     if 'PvPTalents' in char:
                         for trait in char['PvPTalents']:
@@ -398,7 +436,7 @@ for content in contents:
                                                 elif enchant_id in enchant_source:
                                                     counts['source'] = enchant_source[enchant_id]
                                                 elif enchant_id not in missing_enchants:
-                                                    print('[Not found]', enchant_id, enchant['display_string'])
+                                                    print('[Not found]', enchant_id, enchant['display_string'], counts['charAPI'])
                                                     missing_enchants[enchant_id] = enchant['display_string']
                                     elif enchant_id in enchant_source:
                                         counts['source'] = enchant_source[enchant_id]
