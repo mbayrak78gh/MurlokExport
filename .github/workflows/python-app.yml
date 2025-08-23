@@ -58,7 +58,7 @@ jobs:
         file_path: MurlokExport_v${{ env.NOW }}.zip
         display_name: MurlokExport_v${{ env.NOW }}
         game_endpoint: wow
-        game_versions: "11.2.0"
+        game_versions: "11.2.5"
         project_id: "1273867"
         changelog: ${{ steps.changelog_reader.outputs.contents }}
         token: ${{ secrets.CF_API_TOKEN }}

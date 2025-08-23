@@ -1,4 +1,4 @@
-L = LibStub("AceLocale-3.0"):GetLocale("MurlokExport")
+local L = LibStub("AceLocale-3.0"):GetLocale("MurlokExport")
 
 MURLOKEXPORT_TITLE                                  = "MurlokExport"
 MURLOKEXPORT_CATEGORY_EQUIPMENT                     = L["MURLOKEXPORT_CATEGORY_EQUIPMENT"]

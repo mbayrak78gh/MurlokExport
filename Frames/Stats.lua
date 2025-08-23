@@ -43,7 +43,7 @@ function StatsFrameMixin:OnClick(stats)
         self.stats["secStatIcon" .. index]:SetTexture(core:Artwork("Attribute_" .. k))
 		if v.value == nil then v.value = 0 end
 		if v.percent == nil then v.percent = 0 end
-        self.stats["secStatName" .. index]:SetText(L["MURLOKEXPORT_STATS_" .. string.upper(k)] .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
+        self.stats["secStatName" .. index]:SetText(_G["MURLOKEXPORT_STATS_" .. string.upper(k)] .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
         index = index + 1
     end
 
@@ -52,7 +52,7 @@ function StatsFrameMixin:OnClick(stats)
         self.stats["minorStatIcon" .. index]:SetTexture(core:Artwork("Attribute_" .. k))
 		if v.value == nil then v.value = 0 end
 		if v.percent == nil then v.percent = 0 end
-        self.stats["minorStatName" .. index]:SetText(L["MURLOKEXPORT_STATS_" .. string.upper(k)] .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
+        self.stats["minorStatName" .. index]:SetText(_G["MURLOKEXPORT_STATS_" .. string.upper(k)] .. "\n" .. v.value .. " / " .. v.percent .. "%\n" .. "[" .. format("%d%%", playerStats[k] + 0.5) .. "]")
         index = index + 1
     end
     self.stats.ratingStatName:SetText(core:getRankColor(0) .. stats.rating .. "|r")
