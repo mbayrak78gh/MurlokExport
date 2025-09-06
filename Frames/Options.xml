@@ -39,7 +39,16 @@
           <OnShow method="ShowOnlyCurrentClassCheckButtonOnShow"/>
           <OnClick method="ShowOnlyCurrentClassCheckButtonOnClick" />
         </Scripts>
-      </CheckButton>      
+      </CheckButton>
+      <CheckButton parentKey="HideMinimapButtonCheckButton" inherits="InterfaceOptionsCheckButtonTemplate" mixin="OptionsPanelTemplateMixin">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeKey="$parent.ShowOnlyCurrentClassCheckButton" relativePoint="BOTTOMLEFT" x="-2" y="-8" />
+        </Anchors>
+        <Scripts>
+          <OnShow method="HideMinimapButtonCheckButtonOnShow"/>
+          <OnClick method="HideMinimapButtonCheckButtonOnClick"/>
+        </Scripts>
+      </CheckButton>            
     </Frames>
     <Scripts>
       <OnLoad method="OnLoad"/>

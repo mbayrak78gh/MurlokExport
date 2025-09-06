@@ -1,3 +1,9 @@
+### 1.3.0
+- option to hide minimap button added
+- position of minimap button saved in variables
+- missing item effects added
+- bug fix: all talent buttons reset in ME if a talent changed 
+
 ### 1.2.0
 - Naming for "saved talent loadouts" according to mythic+ or solo pvp adapted. Name includes now selected mode.
 - AddOn configuration added

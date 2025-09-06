@@ -70,4 +70,8 @@ local dataObject = LibStub("LibDataBroker-1.1"):NewDataObject(MURLOKEXPORT_TITLE
 	OnLeave = OnLeave
 })
 
-dbIcon:Register(MURLOKEXPORT_TITLE, dataObject)
+function core:RegisterMinimapButton()
+	dbIcon:Register(MURLOKEXPORT_TITLE, dataObject, MurlokExportConfig)
+end
+
+core.dbIcon = dbIcon

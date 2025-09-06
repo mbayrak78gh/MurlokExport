@@ -125,7 +125,7 @@ function TraitsFrameMixin:LoadTalentTreeInternal()
 
 	local requiredNodeIds = {}
 	local groupIds = {}
-	
+
 	-- warriror spec groupids to exclude
 	local excludedGroupIds = {[9033]=true, [9034]=true}
 
@@ -255,7 +255,8 @@ function TraitsFrameMixin:OnHide()
 end
 
 function TraitsFrameMixin:OnEvent(event, ...)
-	TalentFrameBaseMixin.OnEvent(self, event, ...)
+	-- 1.3.0: commented out. resets all talent buttons in ME if any talent is changed
+	-- TalentFrameBaseMixin.OnEvent(self, event, ...)
 end
 
 function TraitsFrameMixin:ReleaseAllTalentButtons()

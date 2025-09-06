@@ -39,3 +39,16 @@ end
 function OptionsPanelTemplateMixin:ShowOnlyCurrentClassCheckButtonOnClick()
     MurlokExportConfig.ShowOnlyCurrentClass = UIMurlokExport.OptionsPanel.ShowOnlyCurrentClassCheckButton:GetChecked()
 end
+
+function OptionsPanelTemplateMixin:HideMinimapButtonCheckButtonOnShow()
+    if UIMurlokExport.OptionsPanel ~= nil then
+        local checkBox = UIMurlokExport.OptionsPanel.HideMinimapButtonCheckButton
+        checkBox.Text:SetText(MURLOKEXPORT_OPTIONS_HIDE_MINIMAP_BUTTON)
+        checkBox:SetChecked(MurlokExportConfig.hide)
+    end
+end
+
+function OptionsPanelTemplateMixin:HideMinimapButtonCheckButtonOnClick()
+    MurlokExportConfig.hide = UIMurlokExport.OptionsPanel.HideMinimapButtonCheckButton:GetChecked()
+    core.dbIcon:Refresh(MURLOKEXPORT_TITLE, MurlokExportConfig)
+end

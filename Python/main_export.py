@@ -114,14 +114,18 @@ enchant_source = {
     6574: {'type': 'item', 'id': 200021},
     6580: {'type': 'item', 'id': 200022},
     6586: {'type': 'item', 'id': 200023},
-    6592: {'type': 'item', 'id': 200031},
+    6591: {'type': 'item', 'id': 199989},
+    6592: {'type': 'item', 'id': 200031},    
+    6596: {'type': 'item', 'id': 199949},
     6598: {'type': 'item', 'id': 200033},
     6604: {'type': 'item', 'id': 200032},
     6605: {'type': 'item', 'id': 199934},
     6606: {'type': 'item', 'id': 199976},
     6607: {'type': 'item', 'id': 200018},
+    6610: {'type': 'item', 'id': 200019},
     6612: {'type': 'item', 'id': 199978},
     6613: {'type': 'item', 'id': 200020},
+    6614: {'type': 'item', 'id': 199943},
     6615: {'type': 'item', 'id': 199985},
     6616: {'type': 'item', 'id': 200027},
     6618: {'type': 'item', 'id': 199986},
@@ -164,12 +168,14 @@ enchant_source = {
     7380: {'type': 'item', 'id': 223708},
     7381: {'type': 'item', 'id': 223709},
     7382: {'type': 'item', 'id': 223710},
+    7383: {'type': 'item', 'id': 223711},
     7384: {'type': 'item', 'id': 223712},
     7385: {'type': 'item', 'id': 223713},
     7386: {'type': 'item', 'id': 223714},
     7388: {'type': 'item', 'id': 223716},
     7390: {'type': 'item', 'id': 223718},
     7391: {'type': 'item', 'id': 223719},
+    7392: {'type': 'item', 'id': 223720},
     7393: {'type': 'item', 'id': 223721},
     7394: {'type': 'item', 'id': 223722},
     7395: {'type': 'item', 'id': 223723},
@@ -186,6 +192,7 @@ enchant_source = {
     7408: {'type': 'item', 'id': 223736},
     7409: {'type': 'item', 'id': 223737},
     7410: {'type': 'item', 'id': 223738},
+    7411: {'type': 'item', 'id': 223739},
     7412: {'type': 'item', 'id': 223740},
     7413: {'type': 'item', 'id': 223798},
     7414: {'type': 'item', 'id': 223799},
@@ -441,8 +448,8 @@ for content in contents:
                                     elif enchant_id in enchant_source:
                                         counts['source'] = enchant_source[enchant_id]
                                     elif enchant_id not in missing_enchants:
-                                        print('[Not found]', enchant_id)
-                                        missing_enchants[enchant_id] = bnet_item['item']['id']
+                                        print('[Not found]', enchant_id, counts['charAPI'])
+                                        missing_enchants[enchant_id] = [bnet_item['item']['id'],  counts['charAPI']]
                         del counts['charAPI']
 
                 stats['equips'] = equips

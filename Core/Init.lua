@@ -2,7 +2,9 @@ local _, core = ...
 
 local defaults = {
     CompactView = false,
-    ShowOnlyCurrentClass = false
+    ShowOnlyCurrentClass = false,
+    hide = false,
+    minimapPos = 225
 }
 
 function core:init(event, name)
@@ -50,6 +52,8 @@ function core:init(event, name)
     end
 
     MurlokExportConfig = MurlokExportConfig or CopyTable(defaults)
+
+    core:RegisterMinimapButton()
 end
 
 UIMurlokExport:RegisterEvent("ADDON_LOADED")
